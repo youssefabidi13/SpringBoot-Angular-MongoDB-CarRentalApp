@@ -17,7 +17,7 @@ CarRentalManagementApp is a comprehensive application for managing a car rental 
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your_username/CarRentalManagementApp.git`
+1. Clone the repository: `git clone https://github.com/youssefabidi13/SpringBoot-Angular-MongoDB-CarRentalApp.git`
 2. Configure the necessary environment variables.
 3. Install the required dependencies.
 4. Run the application using the provided scripts.
