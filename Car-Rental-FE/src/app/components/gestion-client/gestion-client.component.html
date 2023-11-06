@@ -1,0 +1,267 @@
+<section class="section products-main">
+  <div class="container" *ngIf="!showEditForm">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="title text-center">
+          <h2>All clients</h2>
+          <!-- <p>The best Online sales to shop these weekend</p> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" >
+            <div class="product">
+              <div class="product-wrap">
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/322.jpg" alt="product-img" /></a>
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second" src="assets/images/444.jpg" alt="product-img" /></a>
+              </div>
+  
+              <span class="onsale">Sale</span>
+              <div class="product-hover-overlay">
+                  <a href="#"><i class="tf-ion-android-cart"></i></a>
+                  <a href="#"><i class="tf-ion-ios-heart"></i></a>
+                </div>
+  
+              <div class="product-info">
+                  <h2 class="product-title h5 mb-0"><a href="#">Floral Kirby</a></h2>
+                  <span class="price">
+                      $329.10
+                  </span>
+              </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5">
+          <div class="product">
+              <div class="product-wrap">
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/111.jpg" alt="product-img" /></a>
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second" src="assets/images/444.jpg" alt="product-img" /></a>
+              </div>
+  
+              <div class="product-hover-overlay">
+                  <a href="#"><i class="tf-ion-android-cart"></i></a>
+                  <a href="#"><i class="tf-ion-ios-heart"></i></a>
+                </div>
+                
+              <div class="product-info">
+                  <h2 class="product-title h5 mb-0"><a href="#">Open knit switer</a></h2>
+                  <span class="price">
+                      $29.10
+                  </span>
+              </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" >
+          <div class="product">
+              <div class="product-wrap">
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/222.jpg" alt="product-img" /></a>
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second" src="assets/images/322.jpg" alt="product-img" /></a>
+              </div>
+  
+              <span class="onsale">Sale</span>
+              <div class="product-hover-overlay">
+                  <a href="#"><i class="tf-ion-android-cart"></i></a>
+                  <a href="#"><i class="tf-ion-ios-heart"></i></a>
+                </div>
+  
+              <div class="product-info">
+                  <h2 class="product-title h5 mb-0"><a href="#">Official trendy</a></h2>
+                  <span class="price">
+                      $350.00 – $355.00
+                  </span>
+              </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5">
+          <div class="product">
+              <div class="product-wrap">
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/322.jpg" alt="product-img" /></a>
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second" src="assets/images/111.jpg" alt="product-img" /></a>
+              </div>
+  
+              <div class="product-hover-overlay">
+                  <a href="#"><i class="tf-ion-android-cart"></i></a>
+                  <a href="#"><i class="tf-ion-ios-heart"></i></a>
+                </div>
+  
+              <div class="product-info">
+                  <h2 class="product-title h5 mb-0"><a href="#">Frock short</a></h2>
+                  <span class="price">
+                      $249
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      </div> -->
+      <button type="button" class="btn btn-primary" (click)="toggleEditForm()">
+        Add new client
+      </button><br>
+      <br>
+      <table
+      class="table table-striped table-bordered table-sm row-border hover"
+      id="datatableexample"
+    >
+      <thead>
+        <tr>
+          <th>CIN</th>
+          <th>Full name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of clients">
+          <td>{{ c.cin }}</td>
+          <td><a routerLink="/client-details/{{c.id}}">{{ c.firstName }} {{ c.lastName }}</a></td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.phoneNumber }}</td>
+          <td>
+            <button
+            type="button" class="btn btn-primary" 
+            routerLink="/form-edit/{{c.id}}"
+            >
+            <!-- (click)="toggleEditForm(c.id)"
+            > -->
+              Update
+            </button>
+            &nbsp;
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDelete(c.id)">
+            Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="container"*ngIf="showEditForm">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="login-form border p-5">
+            <h2 class="mb-2">Add client </h2>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+		<div class="form-group mb-4">
+          <label for="cin">CIN</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter CIN"
+            formControlName="cin"
+          />
+          <div
+            *ngIf="
+              editForm.get('cin')?.invalid &&
+              editForm.get('cin')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter a valid cin</small
+            >
+          </div>
+        </div>
+        
+        <div class="form-group mb-4">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter email address"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              editForm.get('email')?.invalid &&
+              editForm.get('email')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter a valid email address</small
+            >
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="firstname">Firstname</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter first name"
+            formControlName="firstname"
+          />
+          <div
+            *ngIf="
+              editForm.get('firstname')?.invalid &&
+              editForm.get('firstname')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter first name</small
+            >
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="lastname">Lastname</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter last name"
+            formControlName="lastname"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastname')?.invalid &&
+              editForm.get('lastname')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter last name</small
+            >
+          </div>
+        </div>
+		<div class="form-group mb-4">
+          <label for="phone">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter phone number"
+            formControlName="phone"
+          />
+          <div
+            *ngIf="
+              editForm.get('phone')?.invalid &&
+              editForm.get('phone')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter phone</small
+            >
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-main mt-3 btn-block"
+          [disabled]="!editForm.valid"
+        >
+          Add client
+        </button>
+      </form>
+        </div>
+        </div>
+        </div>
+        </div>
+  
+</section>
+
+
+
+
+  
+  
+  

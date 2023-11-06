@@ -1,0 +1,91 @@
+<!-- <section class="page-header">
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3">Order</h1>
+          <p>Order</p>
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Order</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 col-sm-12 col-lg-3">
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link active" routerLink="/orders">Orders in hold</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/ordersAccepted">Orders accepted</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/ordersRefused">Orders refused</a>
+        </div>
+        <!-- <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/order">Account</a>
+        </div> -->
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/logout">Log Out</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+        <table *ngIf="orders!.length > 0"
+      class="table table-striped table-bordered table-sm row-border hover"
+      id="datatableexample"
+    >
+      <thead>
+        <tr>
+          <th>Full name</th>
+          <th>CIN</th>
+          <th>Car</th>
+          <th>Total cost</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of orders">
+          <td><a routerLink="/client-details/{{o.client.id}}">{{ o.client.firstName }} {{ o.client.lastName }}</a></td>
+          <td>{{ o.client.cin }}</td>
+          <td>{{ o.car.brand }} {{o.car.model}}</td>
+          <td>{{ o.totalCost | currency:'USD' }}</td>
+          <td>
+            <button
+            type="button" class="btn btn-primary" 
+            (click)="acceptOrder(o)"
+            >
+           
+              Accepter
+            </button>
+            &nbsp;
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="refuseOrder(o)">
+            Refuser
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      <div *ngIf="orders!.length == 0" class="alert alert-info" role="alert">
+        No orders yet
+      </div>
+      </div>
+    </div>
+  </div>
+</section>

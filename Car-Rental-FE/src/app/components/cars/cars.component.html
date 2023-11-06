@@ -1,0 +1,175 @@
+<section class="section products-main">
+    <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <div class="title text-center">
+                      <h2>All Cars</h2>
+                  </div>
+              </div>
+          </div>
+          <div>
+            <div class="submit-form">
+              <!-- Add New Button -->
+              <span>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New</button>
+              </span>
+          
+              <!-- Add Car Modal -->
+              <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addModalLabel">Add New Car</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- Car Form -->
+                      <form (ngSubmit)="savedCar()" #carForm="ngForm">
+                        <div class="form-group">
+                          <label for="model">Model</label>
+                          <input type="text" class="form-control" id="model" required [(ngModel)]="car.model" name="model">
+                        </div>
+          
+                        <div class="form-group">
+                          <label for="brand">Brand</label>
+                          <input type="text" class="form-control" id="brand" required [(ngModel)]="car.brand" name="brand">
+                        </div>
+          
+                        <div class="form-group">
+                          <label for="description">Description</label>
+                          <input type="text" class="form-control" id="description" required [(ngModel)]="car.description" name="description">
+                        </div>
+          
+                        <div class="form-group">
+                          <label for="pricePerDay">Price Per Day</label>
+                          <input type="number" class="form-control" id="pricePerDay" required [(ngModel)]="car.pricePerDay" name="pricePerDay">
+                        </div>
+          
+                        <div class="form-group">
+                          <label for="available">Available</label>
+                          <input type="checkbox" class="form-control" id="available" [(ngModel)]="car.available" name="available">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="image">Image</label>
+                          <input type="file" class="form-control" id="image" (change)="onFileChange($event)" accept="image/*">
+                        </div>
+          
+                        <div class="form-group">
+                          <label for="start_Date">Start Date</label>
+                          <input type="date" class="form-control" id="start_Date" [(ngModel)]="car.start_Date" name="start_Date">
+                        </div>
+          
+                        <div class="form-group">
+                          <label for="end_Date">End Date</label>
+                          <input type="date" class="form-control" id="end_Date" [(ngModel)]="car.end_Date" name="end_Date">
+                        </div>
+          
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- <span>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New</button>
+          </span> -->
+          <br>
+      <div class="row">
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let c of cars">
+            <div class="product">
+              <div class="product-wrap">
+                  <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/{{c.image}}" alt="product-img" /></a>
+              </div>
+  
+              <span class="onsale">{{c. model}}</span>
+              <div class="product-hover-overlay">
+                  <button (click)="deleteCar(c.id)"><i class="fa fa-trash"></i></button>
+                </div>
+  
+              <div class="product-info">
+                  <h2 class="product-title h5 mb-0"><a href="#">{{c.brand}}</a></h2>
+                  <span class="price">
+                      {{c.pricePerDay}}
+                  </span>
+              </div>
+              <div>
+                <div class="submit-form">
+                  <!-- Edit Button -->
+                  <span>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" (click)="editCar(c)">Edit</button>
+                  </span>
+          
+                  <!-- Edit Car Modal -->
+                  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="editModalLabel">Edit Car</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- Car Form for editing -->
+                          <form (ngSubmit)="updateCar()" #editCarForm="ngForm">
+                            <div class="form-group">
+                              <input type="hidden" [(ngModel)]="car.id" name="id">
+                              <label for="model">Model</label>
+                              <input type="text" class="form-control" id="model" required [(ngModel)]="car.model" name="model">
+                            </div>
+          
+                            <div class="form-group">
+                              <label for="brand">Brand</label>
+                              <input type="text" class="form-control" id="brand" required [(ngModel)]="car.brand" name="brand">
+                            </div>
+          
+                            <div class="form-group">
+                              <label for="description">Description</label>
+                              <input type="text" class="form-control" id="description" required [(ngModel)]="car.description" name="description">
+                            </div>
+          
+                            <div class="form-group">
+                              <label for="pricePerDay">Price Per Day</label>
+                              <input type="number" class="form-control" id="pricePerDay" required [(ngModel)]="car.pricePerDay" name="pricePerDay">
+                            </div>
+          
+                            <div class="form-group">
+                              <label for="available">Available</label>
+                              <input type="checkbox" class="form-control" id="available" [(ngModel)]="car.available" name="available">
+                            </div>
+          
+                            <div class="form-group">
+                              <label for="start_Date">Start Date</label>
+                              <input type="date" class="form-control" id="start_Date" [(ngModel)]="car.start_Date" name="start_Date">
+                            </div>
+          
+                            <div class="form-group">
+                              <label for="end_Date">End Date</label>
+                              <input type="date" class="form-control" id="end_Date" [(ngModel)]="car.end_Date" name="end_Date">
+                            </div>
+          
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-success">Update</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

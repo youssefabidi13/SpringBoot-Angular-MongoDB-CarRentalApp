@@ -1,0 +1,127 @@
+<section>
+<div class="container">
+<!-- *ngIf="showEditForm"> -->
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="login-form border p-5">
+            <h2 class="mb-2">Edit client </h2>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+		<div class="form-group mb-4">
+          <label for="cin">CIN</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter CIN"
+            formControlName="cin"
+          />
+          <div
+            *ngIf="
+              editForm.get('cin')?.invalid &&
+              editForm.get('cin')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter a valid cin</small
+            >
+          </div>
+        </div>
+        <!-- <div class="form-group mb-4">
+            <label for="id">Id</label>
+
+            <input
+              type="text"
+              class="form-control"
+              formControlName="id"
+              
+            />
+            
+          </div> -->
+        <div class="form-group mb-4">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter email address"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              editForm.get('email')?.invalid &&
+              editForm.get('email')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter a valid email address</small
+            >
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="firstname">Firstname</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter first name"
+            formControlName="firstname"
+          />
+          <div
+            *ngIf="
+              editForm.get('firstname')?.invalid &&
+              editForm.get('firstname')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter first name</small
+            >
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="lastname">Lastname</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter last name"
+            formControlName="lastname"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastname')?.invalid &&
+              editForm.get('lastname')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter last name</small
+            >
+          </div>
+        </div>
+		<div class="form-group mb-4">
+          <label for="phone">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter phone number"
+            formControlName="phone"
+          />
+          <div
+            *ngIf="
+              editForm.get('phone')?.invalid &&
+              editForm.get('phone')?.touched
+            "
+          >
+            <small class="form-text text-danger"
+              >Please enter phone</small
+            >
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-main mt-3 btn-block"
+          [disabled]="!editForm.valid"
+        >
+          Edit
+        </button>
+      </form>
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>

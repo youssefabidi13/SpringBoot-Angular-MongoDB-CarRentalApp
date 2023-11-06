@@ -1,0 +1,113 @@
+<section class="page-header">
+    <div class="overly"></div> 	
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content text-center">
+            <h1 class="mb-3">Car detail</h1>  
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Car detail</li>
+            </ol>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="single-product">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="single-product-slider">
+            <div class="carousel slide" data-ride="carousel" id="single-product-slider">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="assets/images/{{car.image}}" alt="" class="img-fluid">
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/images/{{car.image}}" alt="" class="img-fluid">
+                </div>
+                <div class="carousel-item ">
+                  <img src="assets/images/{{car.image}}" alt="" class="img-fluid">
+                </div>
+              </div>
+  
+              <!-- <ol class="carousel-indicators">
+                  <li data-target="#single-product-slider" data-slide-to="0" class="active">
+                      <img src="assets/images/product-3.jpg" alt="" class="img-fluid">
+                  </li>
+                  <li data-target="#single-product-slider" data-slide-to="1">
+                      <img src="assets/images/product-2.jpg" alt="" class="img-fluid">
+                  </li>
+                  <li data-target="#single-product-slider" data-slide-to="2">
+                      <img src="assets/images/product-1.jpg" alt="" class="img-fluid">
+                  </li>
+              </ol> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-7">
+          <div class="single-product-details mt-5 mt-lg-0">
+            <h2>{{car?.brand}}</h2>
+            <div class="sku_wrapper mb-4">
+              model: <span class="text-muted">{{car?.model}} </span>
+            </div>
+  
+            <hr>
+            
+            <h3 class="product-price">{{car?.pricePerDay | currency:'USD'}}</h3>
+            
+            <p class="product-description my-4 ">
+                {{car?.description}}
+            </p>
+  
+            <div>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reserveModal">Choose the Client</button>
+              <div class="modal fade" id="reserveModal" tabindex="-1" role="dialog" aria-labelledby="reserveModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="reserveModalLabel">Choose the Client</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form #reservationForm="ngForm" (ngSubmit)="makeOrder()">
+                        <div class="form-group">
+                          <label for="cin">CIN of the customer</label>
+                          <input type="text" class="form-control" id="cin" required [(ngModel)]="cin" name="cin" (ngModelChange)="searchClient()">
+                        </div>
+                        <div *ngIf="client">
+                          <h1>Client Information</h1>
+                          <h3>Last Name: {{client.lastName}}</h3>
+                          <h3>First Name: {{client.firstName}}</h3>
+                          <h3>CIN: {{client.cin}}</h3>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+                        
+    
+            <!-- <div class="products-meta mt-4">
+              <div class="product-category d-flex align-items-center">
+                <span class="font-weight-bold text-capitalize product-meta-title">Categories :</span>
+                <a href="#">Products , </a>
+                <a href="#">Soap</a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

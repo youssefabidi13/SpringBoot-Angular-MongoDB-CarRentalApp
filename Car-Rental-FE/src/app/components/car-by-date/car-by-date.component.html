@@ -1,0 +1,38 @@
+<section class="section products-main">
+    <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <div class="title text-center">
+                      <h2>Available cars</h2>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- <span>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New</button>
+          </span> -->
+          <br>
+      <div class="row">
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let c of cars">
+            <div class="product">
+              <div class="product-wrap">
+                  <a routerLink="/carDetail/{{c.id}}/{{Ddebut}}/{{Dfin}}"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/{{c.image}}" alt="product-img" /></a>
+              </div>
+  
+              <span class="onsale">{{c. model}}</span>
+              <div class="product-hover-overlay">
+                  <!-- <a href="#"><i class="tf-ion-android-cart"></i></a>
+                  <a><i class="tf-ion-ios-heart"></i></a> -->
+                </div>
+  
+              <div class="product-info">
+                  <h2 class="product-title h5 mb-0"><a href="#">{{c.brand}}</a></h2>
+                  <span class="price">
+                      {{c.pricePerDay | currency:'USD'}}
+                  </span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

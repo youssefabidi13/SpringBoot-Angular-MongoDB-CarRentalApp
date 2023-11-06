@@ -1,0 +1,239 @@
+
+<div>
+  <!--button model-->
+  <!-- <button
+    type="button"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#reserveModal"
+  >
+    Make a reservation
+  </button> -->
+  <div style="display: flex; justify-content: center;">
+    <button class="button-57" role="button" type="button" data-toggle="modal" data-target="#reserveModal">
+      <span class="text">Make a reservation</span>
+      <span>Add order</span>
+    </button>
+  </div>
+  
+
+  <div
+    class="modal fade"
+    id="reserveModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="reserveModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reserveModalLabel">Reservation Form</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #reservationForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="startDate"
+                required
+                [(ngModel)]="startDate"
+                name="startDate"
+              />
+            </div>
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="endDate"
+                required
+                [(ngModel)]="endDate"
+                name="endDate"
+              />
+            </div>
+            <!-- <button type="submit" class="btn btn-primary" routerLink="/carbydate/{{startDate}}/{{endDate}}">Submit</button> -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="category section pt-3 pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="fa-solid fa-user" style="font-size: 50px;"></i><!-- User icon -->
+            </div>
+            <div>
+              <h5 class="font-16">Number of clients</h5>
+            </div>
+            <h3 class="mt-4">{{nbClient}}</h3>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="fa-solid fa-dollar-sign" style="font-size: 50px;"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Total Revenue</h5>
+            </div>
+            <h3 class="mt-4">{{totalRevenue | currency:'USD'}}</h3>
+            
+            <!-- <p class="text-muted mt-2 mb-0">
+              <span class="float-right"><i class="fa-solid fa-dollar-sign"></i></span>
+            </p> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="fa-solid fa-car" style="font-size: 50px;"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Number of cars</h5>
+            </div>
+            <h3 class="mt-4">{{nbCars}}</h3>
+            <!-- <div class="progress mt-4" style="height: 4px">
+              <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                style="width: 68%"
+                aria-valuenow="68"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div> -->
+            <!-- <p class="text-muted mt-2 mb-0">
+              Previous period<span class="float-right">68%</span>
+            </p> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="fa-solid fa-user-secret" style="font-size: 45px;"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Number of managers</h5>
+            </div>
+            <h3 class="mt-4">{{nbManagers}}</h3>
+            <!-- <div class="progress mt-4" style="height: 4px">
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                style="width: 82%"
+                aria-valuenow="82"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <p class="text-muted mt-2 mb-0">
+              Previous period<span class="float-right">82%</span>
+            </p> -->
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-buffer bg-danger text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Add to Card</h5>
+            </div>
+            <h3 class="mt-4">86%</h3>
+            <div class="progress mt-4" style="height: 4px">
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                style="width: 82%"
+                aria-valuenow="82"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <p class="text-muted mt-2 mb-0">
+              Previous period<span class="float-right">82%</span>
+            </p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section class="section products-main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="title text-center">
+          <h2>Number of orders per month</h2>
+          <!-- <p>The best Online sales to shop these weekend</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <canvas id="myChart" height="400px"></canvas>
+  </div>
+  </div>
+</section>
+<!-- <section class="section products-main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="title text-center">
+          <h2>Cars availability</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <canvas id="myChart2" height="100px"></canvas>
+    </div>
+  </div>
+</section> -->
+<section class="section products-main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="title text-center">
+          <h2>Orders distributions</h2>
+          <!-- <p>The best Online sales to shop these weekend</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <canvas id="myChart1" height="100px"></canvas>
+    </div>
+  </div>
+</section>
