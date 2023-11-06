@@ -29,16 +29,6 @@ CarRentalManagementApp is a comprehensive application for managing a car rental 
 3. Log in using the provided credentials based on your role (admin/manager/client).
 4. Navigate through the different sections to manage users, vehicles, reservations, and view analytics.
 
-## Contributing
+## Video Demo
 
-We welcome contributions from the community. To contribute to CarRentalManagementApp, follow these steps:
-
-1. Fork the repository.
-2. Create your feature branch: `git checkout -b feature/AmazingFeature`
-3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
-4. Push to the branch: `git push origin feature/AmazingFeature`
-5. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+For a better understanding of how the application works, please watch our video demo .
